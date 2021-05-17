@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import contactsActions from '../../../redux/Contacts/allContactsAction';
+import contactsAOperations from '../../../redux/Contacts/allContactsOperations';
 import s from './Form.module.css';
 
 class Form extends Component {
@@ -20,7 +20,9 @@ class Form extends Component {
 
         if (
             contacts.find(
-                contact => contact.name.toLowerCase() === name.toLowerCase(),
+                contact =>
+                    contact.name.toLowerCase() ===
+                    name.toLowerCase(),
             )
         ) {
             return alert(`${name} is already in contacts`);
@@ -28,10 +30,13 @@ class Form extends Component {
         if (
             contacts.find(
                 contact =>
-                    contact.number.toLowerCase() === number.toLowerCase(),
+                    contact.number.toLowerCase() ===
+                    number.toLowerCase(),
             )
         ) {
-            return alert(`${number} is already in contacts`);
+            return alert(
+                `${number} is already in contacts`,
+            );
         }
         onSubmit(this.state);
         this.reset();
@@ -46,7 +51,10 @@ class Form extends Component {
         const { handleSubmit, handleChange } = this;
 
         return (
-            <form onSubmit={handleSubmit} className={s.form}>
+            <form
+                onSubmit={handleSubmit}
+                className={s.form}
+            >
                 <label>
                     Name
                     <input
@@ -87,7 +95,11 @@ const mapStateToProps = state => ({
     contacts: state.contacts.items,
 });
 const mapDispatchToProps = dispatch => ({
-    onSubmit: e => dispatch(contactsActions.addContact(e)),
+    onSubmit: e =>
+        dispatch(contactsAOperations.addContact(e)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Form);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(Form);

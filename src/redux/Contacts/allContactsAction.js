@@ -1,25 +1,31 @@
 import { createAction } from '@reduxjs/toolkit';
-import axios from 'axios';
-import { v4 as id } from 'uuid';
-id();
 
-axios.defaults.baseURL = 'http://localhost:4040/';
-const addContact = e => dispatch => {
-    const contact = { name, number };
-    axios
-        .post('./contacts', contact)
-        .then(({ data }) => dispatch({ type: 'contacts/add', payload: data }))
-        .catch(error =>
-            dispatch({ type: 'contacts/ addError', payload: error }),
-        );
-};
-// const addContact = createAction('contacts/add', e => ({
-//     payload: {
-//         name: e.name,
-//         number: e.number,
-//         id: id(),
-//},
-//}));
-const deleteContact = createAction('contacts/delete');
+export const addContactRequest = createAction(
+    'contacts/addContactRequest',
+);
+export const addContactSuccess = createAction(
+    'contacts/addContactSuccess',
+);
+export const addContactError = createAction(
+    'contacts/addContactError',
+);
 
-export default { addContact, deleteContact };
+export const deleteContactRequest = createAction(
+    'contacts/deleteContactRequest',
+);
+export const deleteContactSuccess = createAction(
+    'contacts/deleteContactSuccess',
+);
+export const deleteContactError = createAction(
+    'contacts/deleteContactError',
+);
+
+export const fetchContactRequest = createAction(
+    'contacts/fetchContactRequest',
+);
+export const fetchContactSuccess = createAction(
+    'contacts/fetchContactSuccess',
+);
+export const fetchContactError = createAction(
+    'contacts/fetchContactError',
+);
