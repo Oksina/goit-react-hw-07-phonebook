@@ -1,5 +1,7 @@
-//import { combineReducers } from 'redux';
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import {
+    configureStore,
+    getDefaultMiddleware,
+} from '@reduxjs/toolkit';
 import logger from 'redux-logger';
 import {
     FLUSH,
@@ -15,7 +17,14 @@ import filterReducer from './Filter/filterReducer';
 const middleware = [
     ...getDefaultMiddleware({
         serializableCheck: {
-            ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+            ignoredActions: [
+                FLUSH,
+                REHYDRATE,
+                PAUSE,
+                PERSIST,
+                PURGE,
+                REGISTER,
+            ],
         },
     }),
     logger,
@@ -29,7 +38,5 @@ const store = configureStore({
     middleware,
     devTools: process.env.NODE_ENV === 'development',
 });
-
-//const persistor = persistStore(store);
 
 export default store;

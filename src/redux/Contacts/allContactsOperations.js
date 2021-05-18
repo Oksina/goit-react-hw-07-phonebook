@@ -10,12 +10,13 @@ import {
     fetchContactSuccess,
     fetchContactError,
 } from './allContactsAction';
+// import { v4 as id } from 'uuid';
+// id();
 
-axios.defaults.baseURL = 'http://localhost:4040/';
+axios.defaults.baseURL = `http://localhost:4040`;
 
 const fetchContact = () => dispatch => {
     dispatch(fetchContactRequest());
-
     axios
         .get('/contacts')
         .then(({ data }) =>
@@ -28,12 +29,13 @@ const addContact = e => dispatch => {
     const contact = {
         name: e.name,
         number: e.number,
+        //id: id(),
     };
 
     dispatch(addContactRequest());
 
     axios
-        .post('./contacts', contact)
+        .post('/contacts', contact)
         .then(({ data }) =>
             dispatch(addContactSuccess(data)),
         )
@@ -51,4 +53,4 @@ const deleteContact = id => dispatch => {
         );
 };
 
-export default { addContact, deleteContact, fetchContact };
+export default { fetchContact, addContact, deleteContact };
