@@ -4,6 +4,7 @@ import List from './components/Contacts/List/List';
 import Filter from './components/Filter/Filter';
 import { connect } from 'react-redux';
 import contactsOperations from './redux/Contacts/allContactsOperations';
+import contactsSelector from './redux/Contacts/allContactsSelector';
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import './index.css';
@@ -21,7 +22,6 @@ class App extends Component {
                 <Form />
                 <h2>Contacts </h2>
                 <Filter />
-                <List />
                 {this.props.isLoadingContact && (
                     <Loader
                         type="Puff"
@@ -32,6 +32,7 @@ class App extends Component {
                         className="loader"
                     />
                 )}
+                <List />
             </div>
         );
     }
@@ -39,8 +40,9 @@ class App extends Component {
 
 const mapStateToProps = state => {
     return {
-        isLoadingContacts: state.contacts.loading,
-        //myContacts: state.contacts,
+        isLoadingContacts: contactsSelector.getLoading(
+            state,
+        ),
     };
 };
 const mapDispatchToProps = dispatch => ({
