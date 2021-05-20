@@ -12,7 +12,7 @@ import {
     REGISTER,
 } from 'redux-persist';
 import contactsReducer from './Contacts/allContactsReducer';
-import filterReducer from './Filter/filterReducer';
+//import filterReducer from './Filter/filterReducer';
 
 const middleware = [
     ...getDefaultMiddleware({
@@ -33,7 +33,7 @@ const middleware = [
 const store = configureStore({
     reducer: {
         contacts: contactsReducer,
-        filter: filterReducer,
+        //filter: filterReducer,
     },
     middleware,
     devTools: process.env.NODE_ENV === 'development',

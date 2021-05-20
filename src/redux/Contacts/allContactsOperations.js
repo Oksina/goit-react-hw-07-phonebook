@@ -10,8 +10,6 @@ import {
     fetchContactSuccess,
     fetchContactError,
 } from './allContactsAction';
-// import { v4 as id } from 'uuid';
-// id();
 
 axios.defaults.baseURL = `http://localhost:4040`;
 
@@ -29,7 +27,6 @@ const addContact = e => dispatch => {
     const contact = {
         name: e.name,
         number: e.number,
-        //id: id(),
     };
 
     dispatch(addContactRequest());
