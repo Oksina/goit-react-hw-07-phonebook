@@ -2,16 +2,20 @@ import React from 'react';
 import ListItem from './ListItem/ListItem';
 import s from './List.module.css';
 import { connect } from 'react-redux';
-import getFilteredContacts from '../../../redux/Contacts/allContactsSelector';
+import {
+    getVisibleContacts,
+    getFilter,
+} from '../../../redux/Contacts/allContactsSelector';
 
 const List = ({ contacts }) => {
+    console.log({ contacts });
     return (
         <ul className={s.list}>
             {contacts.length > 0 ? (
                 <ListItem contacts={contacts} />
             ) : (
                 <p className={s.message}>
-                    You have no contacts jet.
+                    You have no contacts.
                 </p>
             )}
         </ul>
@@ -19,8 +23,8 @@ const List = ({ contacts }) => {
 };
 
 const mapStateToProps = state => ({
-    contacts: getFilteredContacts(state),
-    //filter: contactsSelector.getFilter(state),
+    contacts: getVisibleContacts(state),
+    filter: getFilter(state),
 });
 
 export default connect(mapStateToProps, null)(List);
@@ -41,19 +45,3 @@ export default connect(mapStateToProps, null)(List);
 // }) => ({
 //     contacts: getVisibleContacts(items, filter),
 // });
-
-// const getVisibleContacts = createSelector(
-//     [getAllContacts, getFilter],
-//     (contacts, filter) => {
-//         const normalizedFilter = filter.toLowerCase();
-//         return contacts.filter(
-//             ({ name, number }) =>
-//                 name
-//                     .toLowerCase()
-//                     .includes(normalizedFilter) ||
-//                 number
-//                     .toLowerCase()
-//                     .includes(normalizedFilter),
-//         );
-//     },
-// );

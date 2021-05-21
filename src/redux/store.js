@@ -2,7 +2,7 @@ import {
     configureStore,
     getDefaultMiddleware,
 } from '@reduxjs/toolkit';
-import logger from 'redux-logger';
+// import logger from 'redux-logger';
 import {
     FLUSH,
     REHYDRATE,
@@ -27,7 +27,7 @@ const middleware = [
             ],
         },
     }),
-    logger,
+    // logger,
 ];
 
 const store = configureStore({

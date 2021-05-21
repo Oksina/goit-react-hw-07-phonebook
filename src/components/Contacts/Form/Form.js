@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import contactsOperations from '../../../redux/Contacts/allContactsOperations';
-import contactsSelector from '../../../redux/Contacts/allContactsSelector';
+import { getAllContacts } from '../../../redux/Contacts/allContactsSelector';
 import s from './Form.module.css';
 
 class Form extends Component {
@@ -93,7 +93,7 @@ class Form extends Component {
 Form.propTypes = { onSubmit: PropTypes.func };
 
 const mapStateToProps = state => ({
-    contacts: contactsSelector.getAllContacts(state),
+    contacts: getAllContacts(state),
 });
 const mapDispatchToProps = dispatch => ({
     onSubmit: e =>

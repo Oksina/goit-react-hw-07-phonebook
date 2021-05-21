@@ -4,7 +4,7 @@ import List from './components/Contacts/List/List';
 import Filter from './components/Filter/Filter';
 import { connect } from 'react-redux';
 import contactsOperations from './redux/Contacts/allContactsOperations';
-import contactsSelector from './redux/Contacts/allContactsSelector';
+import { getLoading } from './redux/Contacts/allContactsSelector';
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import './index.css';
@@ -40,9 +40,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
     return {
-        isLoadingContacts: contactsSelector.getLoading(
-            state,
-        ),
+        isLoadingContacts: getLoading(state),
     };
 };
 const mapDispatchToProps = dispatch => ({
