@@ -28,20 +28,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, null)(List);
-
-// const getVisibleContacts = (allContacts, filter) => {
-//     const normalizedFilter = filter.toLowerCase();
-
-//     return allContacts.filter(contact =>
-//         contact.name
-//             .toLowerCase()
-//             .includes(normalizedFilter),
-//     );
-// };
-
-// const mapStateToProps = ({
-//     contacts: { items },
-//     filter,
-// }) => ({
-//     contacts: getVisibleContacts(items, filter),
-// });

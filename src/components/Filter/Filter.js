@@ -9,11 +9,11 @@ const Filter = ({ value, onChange }) => {
     return (
         <div>
             <label className={s.label}>
-                Find contacts by name
+                Find contacts
                 <input
                     type="text"
                     name="filter"
-                    placeholder="Name"
+                    //placeholder="Name"
                     onChange={onChange}
                     value={value}
                     className={s.input}
@@ -22,10 +22,6 @@ const Filter = ({ value, onChange }) => {
         </div>
     );
 };
-
-// const mapStateToProps = state => ({
-//     value: getFilter(state),
-// });
 
 const mapStateToProps = state => ({
     value: getFilter(state),
